@@ -1,8 +1,9 @@
 "use client";
 
-import { useSendMessage } from "@/app/_hooks/useSendMessage";
-import useWebSocketConnection from "@/app/_hooks/useWebSocketConnection";
 import { useForm } from "react-hook-form";
+
+import { useSendMessage } from "../../_hooks/useSendMessage";
+import useWebSocketConnection from "../../_hooks/useWebSocketConnection";
 
 interface ChatForm {
   message: string;
@@ -13,7 +14,6 @@ function Chat({ params }: { params: { chatId: number } }) {
   const chatId = params.chatId;
   const senderId = 1;
 
-  // websocket 연결 / 구독
   const { messageList, stompClientRef } = useWebSocketConnection({ chatId });
   const sendMessage = useSendMessage({ stompClientRef, chatId });
 

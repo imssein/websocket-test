@@ -10,7 +10,7 @@ export default function Home() {
       <Link href="/chat/2">
         <p className="w-32 py-3 border bg-red-100 rounded-md text-center items-center">채팅방 2</p>
       </Link>
-      <Link href="/chat/1">
+      <Link href="/chat/3">
         <p className="w-32 py-3 border bg-red-100 rounded-md text-center items-center">채팅방 3</p>
       </Link>
     </main>

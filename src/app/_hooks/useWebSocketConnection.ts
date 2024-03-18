@@ -1,8 +1,8 @@
 "use client";
 
+import { CompatClient, Stomp } from "@stomp/stompjs";
 import { useEffect, useRef, useState } from "react";
 import SockJS from "sockjs-client";
-import { CompatClient, Stomp } from "@stomp/stompjs";
 
 interface Message {
   chatRoomId: number;
@@ -26,9 +26,9 @@ const useWebSocketConnection = ({ chatId }: { chatId: number }) => {
         const destination = `/sub/chat-rooms/${chatId}`;
         stompClient.subscribe(destination, (message) => {
           const newMessage = JSON.parse(message.body);
-          setMessageList((messageList) => [...messageList, newMessage]);
+          setMessageList((currentList) => [...currentList, newMessage]);
 
-          console.log("Received message:", JSON.parse(message.body));
+          console.log("Received message:", newMessage);
         });
       },
       (error: unknown) => {
